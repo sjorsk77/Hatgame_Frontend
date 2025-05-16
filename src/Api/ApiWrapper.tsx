@@ -12,7 +12,6 @@ class ApiWrapper {
             },
         });
 
-        // Interceptors for requests and responses
         this.axiosInstance.interceptors.request.use(
             (config) => {
                 // Add any custom headers or auth tokens here

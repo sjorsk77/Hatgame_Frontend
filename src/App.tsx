@@ -1,30 +1,25 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import {Join} from "./Pages/Join";
-import {Games} from "./Pages/Games";
-import LobbyPage from "./Pages/LobbyPage";
-import {Create} from "./Pages/Create";
-import {Admin} from "./Pages/Admin";
-import {Authenticate} from "./Pages/Authenticate";
+import {pages} from "./data/pages";
 import {SignalRProvider} from "./SignalRContext";
 
 
 function App() {
   return (
-      <SignalRProvider>
-          <Router>
-              <Routes>
-                  <Route path={"/"} element={<Games/>}/>
-                  <Route path={"join/:gameId"} element={<Join/>}/>
-                  <Route path={"lobby/:gameId"} element={<LobbyPage/>}/>
-                  <Route path={"create"} element={<Create/>}/>
-                  <Route path={"admin"} element={<Admin/>}/>
-                  <Route path={"auth"} element={<Authenticate/>}/>
-                    <Route path={"*"} element={<Navigate to={"/"}/>}/>
-              </Routes>
-          </Router>
-      </SignalRProvider>
+      <div className='flex md:px-20 flex-col min-h-screen bg-white font-montserrat'>
+          <SignalRProvider>
+              <Router>
+                      <Suspense fallback={<div>Loading...</div>}>
+                          <Routes>
+                              {pages.map((page) => (
+                                  <Route key={page.path} path={page.path} element={page.component} />
+                                ))}
+                          </Routes>
+                    </Suspense>
+              </Router>
+          </SignalRProvider>
+      </div>
   );
 }
 

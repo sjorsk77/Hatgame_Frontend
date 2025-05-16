@@ -17,11 +17,14 @@ export const TextInput: React.FC<TextInputProps> = ({ label, placeholder, regex,
         if (regex) {
             setIsValid(regex.test(newValue));
         }
+        if (newValue === '') {
+            setIsValid(true);
+        }
         onChange(newValue);
     };
 
     return (
-        <div className="mb-6">
+        <div className="mb-6 w-full">
             <label
                 htmlFor={label.toLowerCase()}
                 className="block text-sm font-medium text-gray-900 mb-2"

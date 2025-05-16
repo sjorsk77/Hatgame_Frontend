@@ -2,10 +2,9 @@ import {Role} from "../Enums/Roles";
 
 export type Game = {
     id: number;
-    name: string;
-    password: string;
+    pin: number;
     isLive: boolean;
-    rules: Rule[];
+    hubGroup: string;
     players: Player[];
 };
 
@@ -16,14 +15,6 @@ type Player = {
     gameId: number;
     isHost: boolean;
     drinks: Drink[];
-};
-
-
-
-type Rule = {
-    id: number;
-    ruleName: string;
-    description: string;
 };
 
 type Drink = {

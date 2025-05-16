@@ -5,6 +5,6 @@ export type AdminLoginResponse = {
 }
 
 export type CreateJoinGameResponse = {
-    token: string;
     game: Game;
+    token: string;
 }

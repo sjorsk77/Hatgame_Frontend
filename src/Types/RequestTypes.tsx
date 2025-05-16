@@ -4,14 +4,10 @@ export type AdminCreateRequest = {
 }
 
 export type JoinGameRequest = {
-    gameId: number;
+    gamePin: number;
     playerName: string;
-    password?: string | null;
 }
 
 export type CreateGameRequest = {
-    gameName: string;
     playerName: string;
-    password?: string | null;
-    // rules?: Rule[];
 }
